@@ -1,0 +1,30 @@
+{
+  "author": "Konstantin Burykin <burkostya@gmail.com>",
+  "name": "scikit-zero",
+  "description": "Scikit-learn wrapper for node.js over ZeroRPC",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
+  "publishConfig": {
+    "registry": "http://npm:5984/registry/_design/scratch/_rewrite"
+  },
+  "homepage": "http://gitlab/modules/scikit-zero",
+  "repository": "git://gitlab:modules/scikit-zero.git",
+  "bugs": "http://gitlab/modules/scikit-zero/issues",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.10.21"
+  },
+  "files": [
+    "lib",
+    "index.js",
+    "README.md"
+  ],
+  "devDependencies": {
+    "mocha": "~1.14.0",
+    "chai": "~1.8.1"
+  },
+  "readmeFilename": "README.md"
+}
