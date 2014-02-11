@@ -4,49 +4,69 @@ var zerorpc = require('zerorpc');
 var Scikit = require('../lib/scikit-zero');
 
 describe('scikit-zero', function (){
-  it('should create server and close it', function (done){
-    var scikit = new Scikit();
-    var server = scikit.createServer({
-      hostname: '0.0.0.0'
-    });
-    server.on('error', function (err) {
-      server.close();
-      done(err);
-    });
-    server.listen(6001, function () {
-      var client = new zerorpc.Client();
-      client.connect('tcp://0.0.0.0:6001');
-      client.invoke('ping', function (err, res) {
-        client.close();
+  describe('communication', function () {
+    it('should work standalone', function(done){
+      var scikit = new Scikit();
+      scikit.init(function (err) {
         expect(err).to.not.exists;
-        expect(res).to.equal('pong');
-        server.close(function (err) {
+        scikit.ping(function (err, res) {
           expect(err).to.not.exists;
-          done();
+          expect(res).to.equal('pong');
+          scikit.exit(function (err) {
+            expect(err).to.not.exists;
+            done();
+          });
         });
       });
     });
-  });
-  it('should create client and close it', function (done) {
-    var scikit = new Scikit();
-    var server = scikit.createServer({
-      hostname: '0.0.0.0'
-    });
-    server.on('error', function (err) {
-      server.close();
-      done(err);
-    });
-    server.listen(6001, function () {
-      var client = scikit.createClient({
-        url: 'tcp://0.0.0.0:6001'
+    it('should work standalone with custom server settings', function(done){
+      this.timeout(20000);
+      var scikit = new Scikit({
+        hostname: '0.0.0.0',
+        port: 6002
       });
-      client.invoke('ping', function (err, res) {
-        client.close();
+      scikit.on('error', function (err) {
+        done(err);
+      });
+      scikit.init(function (err) {
         expect(err).to.not.exists;
-        expect(res).to.equal('pong');
-        server.close(function (err) {
+        scikit.ping(function (err, res) {
           expect(err).to.not.exists;
-          done();
+          expect(res).to.equal('pong');
+          scikit.exit(function (err) {
+            expect(err).to.not.exists;
+            done();
+          });
+        });
+      });
+    });
+    it('should work with custom remote server', function (done){
+      var scikitRemote = new Scikit();
+      var server = scikitRemote.createServer({
+        hostname: '0.0.0.0',
+        port:     6001
+      });
+      server.on('error', function (err) {
+        server.close();
+        done(err);
+      });
+      server.listen(function () {
+        var scikit = new Scikit({
+          remote: 'tcp://0.0.0.0:6001'
+        });
+        scikit.init(function (err) {
+          expect(err).to.not.exists;
+          scikit.ping(function (err, res) {
+            expect(err).to.not.exists;
+            expect(res).to.equal('pong');
+            scikit.exit(function (err) {
+              expect(err).to.not.exists;
+              server.close(function (err) {
+                expect(err).to.not.exists;
+                done();
+              });
+            });
+          });
         });
       });
     });
