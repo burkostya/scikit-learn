@@ -2,7 +2,7 @@
   "author": "Konstantin Burykin <burkostya@gmail.com>",
   "name": "scikit-zero",
   "description": "Scikit-learn wrapper for node.js over ZeroRPC",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "scripts": {
     "test": "mocha"
