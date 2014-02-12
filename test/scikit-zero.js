@@ -71,4 +71,18 @@ describe('scikit-zero', function (){
       });
     });
   });
+  describe('learn part', function () {
+    var scikit;
+    beforeEach(function (done) {
+      scikit = new Scikit();
+      scikit.init(done);
+    });
+    afterEach(function (done) {
+      scikit.exit(done);
+    });
+    /*it('should do something', function(done){*/
+      
+      //done();
+    /*});*/
+  });
 });
