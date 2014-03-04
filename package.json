@@ -24,7 +24,12 @@
   ],
   "devDependencies": {
     "mocha": "~1.14.0",
-    "chai": "~1.8.1"
+    "chai": "~1.8.1",
+    "arrayify-merge.s": "^0.1.1",
+    "inspect-stream": "^0.1.0"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "JSONStream": "^0.8.0"
+  }
 }
