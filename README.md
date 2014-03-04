@@ -1,15 +1,14 @@
-# scikit-zero
+# scikit-learn
 
-Scikit-learn wrapper for node.js over ZeroRPC
+Node.js wrapper of scikit-learn
 
 ## Installation
 
-`pip install pyzmq==13.1.0`
-`npm install scikit-zero`
+`npm install scikit-learn`
 
 ## Usage
 
-`var module = require('scikit-zero')`
+`var Scikit = require('scikit-learn')`
 
 ## API
 
