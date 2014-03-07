@@ -31,8 +31,8 @@ xyify
     console.log('end');
   });
 
-var predict = clf.predict();
-X.pipe(slice(-1))
-  .pipe(predict)
-  .pipe(inspect());
+//var predict = clf.predict();
+//X.pipe(slice(-1))
+  //.pipe(predict)
+  //.pipe(inspect());
 

@@ -11,8 +11,12 @@ moduleName = 'sklearn.' + args.module
 module = importlib.import_module(moduleName);
 method = getattr(module, args.method)
 
-data = method()
-
-field = getattr(data, args.field)
-
-sys.stdout.write(json.dumps(field.tolist()))
+if (moduleName == 'sklearn.datasets'):
+    data = method()
+    field = getattr(data, args.field)
+    sys.stdout.write(json.dumps(field.tolist()))
+if (moduleName == 'sklearn.svm'):
+    params = json.loads(sys.stdin.readline())
+    clf = method(**params)
+    for item in sys.stdin:
+        print(item)
