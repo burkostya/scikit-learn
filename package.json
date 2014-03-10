@@ -35,6 +35,7 @@
   },
   "readmeFilename": "README.md",
   "dependencies": {
-    "JSONStream": "^0.8.0"
+    "JSONStream": "^0.8.0",
+    "streaming-json-stringify": "^1.0.0"
   }
 }

@@ -16,7 +16,8 @@ if (moduleName == 'sklearn.datasets'):
     field = getattr(data, args.field)
     sys.stdout.write(json.dumps(field.tolist()))
 if (moduleName == 'sklearn.svm'):
-    params = json.loads(sys.stdin.readline())
+    line = sys.stdin.readline()
+    params = json.loads(line)
     clf = method(**params)
     for item in sys.stdin:
-        print(item)
+        sys.stdout.write(item)
