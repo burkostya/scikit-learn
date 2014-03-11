@@ -1,4 +1,4 @@
-import argparse, importlib, json, sys
+import argparse, importlib, json, sys, pickle
 #from sklearn import datasets
 
 parser = argparse.ArgumentParser(description='Runs scilit-zero server')
@@ -19,5 +19,15 @@ if (moduleName == 'sklearn.svm'):
     line = sys.stdin.readline()
     params = json.loads(line)
     clf = method(**params)
+    featuresList = []
+    labelList    = []
     for item in sys.stdin:
-        sys.stdout.write(item)
+        pair = json.loads(item)
+        features = pair[0]
+        label    = pair[1]
+        featuresList.append(features)
+        labelList.append(label)
+    model = clf.fit(featuresList, labelList)
+    pickled = pickle.dumps(model)
+    sys.stdout.write(pickled)
+    #print(pickled)

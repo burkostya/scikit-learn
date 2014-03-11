@@ -20,12 +20,13 @@ var clf = scikit.svm('SVC', {
 
 xyify
   .pipe(slice([1780, -1]))
+  //.pipe(slice([0, -1]))
   .pipe(clf)
   .on('error', function (err) {
     console.log(err);
   })
   .on('model', function (model) {
-    console.log(model);
+    console.log(model.toString());
   })
   .on('end', function () {
     console.log('end');
