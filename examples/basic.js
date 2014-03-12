@@ -7,29 +7,24 @@ var Scikit = require('../lib/scikit-zero');
 
 var scikit = new Scikit();
 
-var X = scikit.dataset('digits');
-var y = scikit.dataset('digits.target');
-var xyify = arrayify();
-X.pipe(xyify);
-y.pipe(xyify);
+var features = scikit.dataset('digits');
+var labels   = scikit.dataset('digits.target');
+var trainingSet = arrayify();
+features.pipe(trainingSet);
+labels.pipe(trainingSet);
 
 var clf = scikit.svm('SVC', {
   gamma: 0.001,
   C:     100
 });
 
-xyify
-  .pipe(slice([1790, -1]))
-  //.pipe(slice([0, -1]))
+trainingSet
+  .pipe(slice([0, -1]))
   .pipe(clf)
   .on('error', function (err) {
     console.log(err);
   })
-  //.on('model', function (model) {
-    //console.log('model');
-    //console.log(model.toString());
-  //})
-  .on('finish', function () {
+  .on('end', function () {
     console.log('training complete');
 
     var predict = clf.predict();
