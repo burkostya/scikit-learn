@@ -3,7 +3,7 @@ var inspect = require('inspect-stream');
 var arrayify = require('arrayify-merge.s');
 var slice    = require('slice-flow.s');
 
-var scikit = require('../lib/scikit-zero');
+var scikit = require('../lib/scikit-learn');
 
 var features = scikit.dataset('digits');
 var labels   = scikit.dataset('digits.target');
