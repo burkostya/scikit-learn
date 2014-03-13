@@ -5,8 +5,8 @@ var slice    = require('slice-flow.s');
 
 var scikit = require('../lib/scikit-learn');
 
-var features = scikit.dataset('digits');
-var labels   = scikit.dataset('digits.target');
+var features = scikit.dataset('load_digits.data');
+var labels   = scikit.dataset('load_digits.target');
 var trainingSet = arrayify();
 features.pipe(trainingSet);
 labels.pipe(trainingSet);
@@ -26,7 +26,7 @@ trainingSet
     console.log('training complete');
 
     var predict = clf.predict();
-    var features = scikit.dataset('digits');
+    var features = scikit.dataset('load_digits.data');
     features.pipe(slice(-1))
       .pipe(predict)
       .pipe(inspect());
