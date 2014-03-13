@@ -1,1 +1,1 @@
-module.exports = require('./lib/scikit-zero');
+module.exports = require('./lib/scikit-learn.js');
