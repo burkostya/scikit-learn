@@ -4,7 +4,8 @@ Node.js wrapper of scikit-learn
 
 ## Installation
 
-`npm install scikit-learn`
+* install [scikit-learn](http://scikit-learn.org/stable/index.html)
+* `npm install scikit-learn`
 
 ## Usage
 
