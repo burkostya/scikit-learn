@@ -25,7 +25,7 @@ var labels   = scikit.dataset('load_digits.target'); //stream of labels
 
 // arrayify is transform stream that turns two input streams
 // into one stream by wraping packets of inputs in array.
-// So trainingSet outputs arrays [<feature>, <label>]
+// So trainingSet outputs arrays [<features>, <label>]
 var trainingSet = arrayify();
 features.pipe(trainingSet);
 labels.pipe(trainingSet);
@@ -57,7 +57,7 @@ trainingSet
 ### scikit.dataset(name, options)
 
 * name `String` Name of method of `sklearn.datasets` on python side
-                concatenated by dot with name of dataset's subset
+                concatenated by dot with name of dataset's subset.
                 Ex: 'load_digits.target'
 * options `Object` Options of method
 
