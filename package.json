@@ -14,9 +14,9 @@
   "scripts": {
     "test": "mocha"
   },
-  "homepage": "http://github.com/burkostya/scikit-zero",
-  "repository": "git://github.com:burkostya/scikit-zero.git",
-  "bugs": "http://github.com/burkostya/scikit-zero/issues",
+  "homepage": "http://github.com/burkostya/scikit-learn",
+  "repository": "git://github.com:burkostya/scikit-learn.git",
+  "bugs": "http://github.com/burkostya/scikit-learn/issues",
   "main": "index.js",
   "engines": {
     "node": ">= 0.10.21"
